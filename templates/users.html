@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Пользователи системы</h1>
+{% for item in users %}
+<div class="col-md6 border rounded">
+    <h2><a href="messages/{{ item.id }}">{{ item.name }} {{ item.surname }}</a></h2>
+</div>
+{% if current_user.is_authenticated %}
+    <div>
+        <a href="/new_message/{{ item.id }}" class="btn btn-warning">Написать</a>
+    </div>
+{% endif %}
+
+{% endfor %}
+{% endblock %}
