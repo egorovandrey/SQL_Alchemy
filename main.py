@@ -3,7 +3,7 @@ from data import db_session
 from data.messages import Messages
 from data.posts import Posts
 from data.users import User
-
+import os
 from flask import render_template, redirect, abort, request, make_response
 from forms.register import RegisterForm
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required
@@ -202,10 +202,9 @@ def show_messages(id):
     return render_template("messages.html", user=user, messages=messages)
 
 
-
 def main():
-
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
 
 
 if __name__ == '__main__':
