@@ -53,7 +53,7 @@ def new_message(id):
         current_user.messages_from.append(message)
         session.merge(current_user)
         session.commit()
-        return redirect(f'/users/{id}')
+        return redirect(f'/messages/{id}')
     return render_template('new_message.html', form=form, user=user)
 
 
